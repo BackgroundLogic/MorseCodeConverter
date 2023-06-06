@@ -1,0 +1,98 @@
+{% from 'bootstrap5/nav.html' import render_nav_item %}
+<!DOCTYPE html>
+<html lang="en">
+{% block html %}
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+    {% block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock metas %}
+
+    {% block styles %}
+    <!-- Bootstrap 5.1.0 import -->
+    {{  bootstrap.load_css() }}
+    <!-- Local Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Satisfy&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/07ab1e8eb7.js" crossorigin="anonymous"></script>
+    {% endblock styles %}
+    {% block page_styles %}
+    <!-- Page Specific Styles -->
+    {% endblock page_styles %}
+    {% endblock head %}
+</head>
+<body>
+    {% block body %}
+
+    <!-- Page Top -->
+    <section id="top">
+        <div class="container-fluid navbar-container">
+        <!-- Nav Bar -->
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="/">Jan Olson</a>
+                <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span  class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        {{ render_nav_item('convert', 'Convert', use_li=True) }}
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    {% block content %}
+    <!-- Page Content -->
+    {% endblock content %}
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container-fluid">
+            <div class="footer">
+                <div class="container pt-4">
+                    <section class="mb-4">
+                        <a
+                            class="btn btn-link btn-floating btn-lg"
+                            href="https://backgroundlogic.github.io/"
+                            >
+                            <i class="fa-sharp fa-solid fa-j fa-social-icon"></i>
+                        </a>
+                        <a
+                            class="btn btn-link btn-floating btn-lg"
+                            href="https://www.instagram.com/backgroundlogic/"
+                            >
+                            <i class="fa-brands fa-instagram fa-social-icon"></i>
+                        </a>
+                        <a
+                            class="btn btn-link btn-floating btn-lg"
+                            href="https://github.com/BackgroundLogic"
+                            >
+                            <i class="fa-brands fa-github fa-social-icon"></i>
+                        </a>
+                    </section>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        &copy; <script>document.write(new Date().getFullYear());</script>, Jan Olson.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% block scripts %}
+    <!-- Javascript -->
+    {{ bootstrap.load_js() }}
+    {% endblock scripts %}
+{% endblock body %}
+</body>
+{% endblock html %}
+</html>
+
